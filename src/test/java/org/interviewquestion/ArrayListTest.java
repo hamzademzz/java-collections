@@ -1,7 +1,4 @@
 package org.interviewquestion;
 
-public class CollectionTest {
-
-
-
+public class ArrayListTest {
 }
