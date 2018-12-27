@@ -1,10 +1,10 @@
 package List;
 
-//2. Write a Java program to iterate through all elements in a array list.
+//4. Write a Java program to retrieve an element (at a specified index) from a given array list.
 
 import java.util.ArrayList;
 
-public class Question2 {
+public class Question4 {
 
     public static void main(String[] args){
 
@@ -14,12 +14,6 @@ public class Question2 {
         colors.add("Green");
         colors.add("Yellow");
 
-        for(String stringElements : colors){
-            System.out.println(stringElements);
-        }
-
-
-
-
+        System.out.println(colors.get(1));
     }
 }

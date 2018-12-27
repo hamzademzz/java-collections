@@ -8,15 +8,15 @@ public class Question3 {
 
     public static void main(String[] args){
 
-        ArrayList<String> integers = new ArrayList<String>();
+        ArrayList<String> colors = new ArrayList<String>();
 
-        integers.add("Red");
-        integers.add("Green");
-        integers.add("Yellow");
+        colors.add("Red");
+        colors.add("Green");
+        colors.add("Yellow");
 
-        integers.add(0 ,"Blue");
+        colors.add(0 ,"Blue");
 
-        System.out.println(integers);
+        System.out.println(colors);
 
     }
 
