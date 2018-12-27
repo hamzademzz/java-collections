@@ -6,11 +6,23 @@ import java.util.ArrayList;
 
 public class Question1 {
 
+    private static ArrayList<String> colors = new ArrayList<String>();
+
     public static void main(String[] args){
 
-        ArrayList<String> colors = new ArrayList<String>();
+        colors.add("Red");
+        System.out.println(colors);
+
 
 
     }
+
+    public static ArrayList<String> getString(){
+        return colors;
+    }
+
+
+
+
 
 }
