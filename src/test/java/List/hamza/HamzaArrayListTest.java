@@ -38,10 +38,20 @@ public class HamzaArrayListTest {
 
         assertEquals(expected, actual);
 
-
-
     }
 
+
+    @Test
+    public void containsCheckIfItContains(){
+        List<Integer> items =new HamzaArrayList<Integer>();
+        items.add(1);
+        items.add(2);
+        items.add(3);
+        boolean expected = items.contains(2);
+        boolean actual = true;
+        assertEquals(expected,actual);
+
+    }
 
 
 
