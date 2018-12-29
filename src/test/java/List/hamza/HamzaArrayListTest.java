@@ -29,6 +29,16 @@ public class HamzaArrayListTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void removeShouldRemove(){
+        List<Integer> items =new HamzaArrayList<Integer>();
+        items.add(1);
+        items.add(2);
+        items.remove(1);
+        Integer actual = items.size();
+        Integer expected = 1;
+
+    }
 
 
 }
