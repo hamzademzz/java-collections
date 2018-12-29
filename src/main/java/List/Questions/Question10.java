@@ -1,10 +1,11 @@
-package List;
+package List.Questions;
 
-//3. Write a Java program to insert an element into the array list at the first position
+//10. Write a Java program to shuffle elements in a array list.
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class Question3 {
+public class Question10 {
 
     public static void main(String[] args){
 
@@ -14,10 +15,9 @@ public class Question3 {
         colors.add("Green");
         colors.add("Yellow");
 
-        colors.add(0 ,"Blue");
+        Collections.shuffle(colors);
 
         System.out.println(colors);
 
     }
-
 }

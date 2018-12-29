@@ -1,4 +1,4 @@
-package List;
+package List.Questions;
 
 //13.Write a Java program to compare two array lists
 

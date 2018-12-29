@@ -1,11 +1,10 @@
-package List;
+package List.Questions;
 
-//21. Write a Java program to replace the second element of a ArrayList with the specified element.
+//18. Write a Java program to test an array list is empty or not.
 
 import java.util.ArrayList;
 
-
-public class Question21 {
+public class Question18 {
 
     public static void main(String[] args){
 
@@ -18,9 +17,11 @@ public class Question21 {
         colors.add("White");
         colors.add("Black");
 
-        colors.set(1,"NEW COLOR");
+        System.out.println(colors.isEmpty());
 
-        System.out.println(colors);
+        colors.removeAll(colors);
+
+        System.out.println(colors.isEmpty());
 
     }
 }

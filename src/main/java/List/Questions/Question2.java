@@ -1,4 +1,4 @@
-package List;
+package List.Questions;
 
 //2. Write a Java program to iterate through all elements in a array list.
 

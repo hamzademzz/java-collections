@@ -1,10 +1,11 @@
-package List;
+package List.Questions;
 
-//22. Write a Java program to print all the elements of a ArrayList using the position of the elements.
+//16. Write a Java program to clone an array list to another array list.
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class Question22 {
+public class Question16 {
 
     public static void main(String[] args){
 
@@ -17,12 +18,11 @@ public class Question22 {
         colors.add("White");
         colors.add("Black");
 
-
-        for(int i=0 ; i<colors.size(); i++){
-            System.out.println(colors.get(i));
-        }
+        ArrayList<String> clone = (ArrayList<String>)colors.clone();
 
 
+
+        System.out.println(clone);
+        System.out.println(colors);
     }
-
 }

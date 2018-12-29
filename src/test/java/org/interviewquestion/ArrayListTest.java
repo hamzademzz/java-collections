@@ -1,9 +1,7 @@
 package org.interviewquestion;
 
-import List.Question1;
+import List.Questions.Question1;
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 

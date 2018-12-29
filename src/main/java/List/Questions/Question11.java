@@ -1,13 +1,13 @@
-package List;
+package List.Questions;
 
-//7. Write a Java program to search an element in a array list
+//11. Write a Java program to reverse elements in a array list.
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class Question7 {
+public class Question11 {
 
     public static void main(String[] args){
-
 
         ArrayList<String> colors = new ArrayList<String>();
 
@@ -15,6 +15,9 @@ public class Question7 {
         colors.add("Green");
         colors.add("Yellow");
 
-        System.out.println(colors.contains("Red"));
+        Collections.reverse(colors);
+
+        System.out.println(colors);
+
     }
 }

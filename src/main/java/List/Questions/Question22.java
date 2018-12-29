@@ -1,13 +1,13 @@
-package List;
+package List.Questions;
 
-//12.Write a Java program to extract a portion of a array list.
+//22. Write a Java program to print all the elements of a ArrayList using the position of the elements.
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class Question12 {
+public class Question22 {
 
     public static void main(String[] args){
+
         ArrayList<String> colors = new ArrayList<String>();
 
         colors.add("Red");
@@ -17,9 +17,12 @@ public class Question12 {
         colors.add("White");
         colors.add("Black");
 
-        //LEARN HOW TO WRITE A SUBLIST
-        List<String> colorsSubList = colors.subList(2 , 4);
 
-        System.out.println(colorsSubList);
+        for(int i=0 ; i<colors.size(); i++){
+            System.out.println(colors.get(i));
+        }
+
+
     }
+
 }

@@ -30,6 +30,35 @@ public class HamzaArrayListTest {
     }
 
     @Test
+    public void isEmptyShouldReturnTrueOrFalse(){
+        List<Integer> items =new HamzaArrayList<Integer>();
+        items.add(1);
+        boolean expected = items.isEmpty();
+        boolean actual = false;
+
+        assertEquals(expected, actual);
+
+
+
+    }
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+ /*
+    @Test
     public void removeShouldRemove(){
         List<Integer> items =new HamzaArrayList<Integer>();
         items.add(1);
@@ -39,6 +68,4 @@ public class HamzaArrayListTest {
         Integer expected = 1;
 
     }
-
-
-}
+     */

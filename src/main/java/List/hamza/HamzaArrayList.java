@@ -26,7 +26,7 @@ public class HamzaArrayList<T> implements List<T>{
     }
 
     public boolean isEmpty() {
-        throw new NotImplementedException();
+        return size() ==0;
     }
 
     public boolean contains(Object o) {
@@ -53,8 +53,6 @@ public class HamzaArrayList<T> implements List<T>{
         count++;
         return true;
     }
-
-
 
     public boolean remove(Object o) {
         throw new NotImplementedException();

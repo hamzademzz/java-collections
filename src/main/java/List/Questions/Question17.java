@@ -1,10 +1,11 @@
-package List;
+package List.Questions;
 
-//18. Write a Java program to test an array list is empty or not.
+//17. Write a Java program to empty an array list.
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class Question18 {
+public class Question17 {
 
     public static void main(String[] args){
 
@@ -17,11 +18,13 @@ public class Question18 {
         colors.add("White");
         colors.add("Black");
 
-        System.out.println(colors.isEmpty());
+        System.out.println("Before removal" + colors);
 
         colors.removeAll(colors);
 
-        System.out.println(colors.isEmpty());
+        System.out.println("After removal " + colors);
+
+
 
     }
 }

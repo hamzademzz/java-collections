@@ -1,4 +1,4 @@
-package List;
+package List.Questions;
 
 //9. Write a Java program to copy one array list into another.
 

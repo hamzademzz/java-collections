@@ -1,14 +1,14 @@
-package List;
+package List.Questions;
 
-//20. Write a Java program to increase the size of an array list.
+//19. Write a Java program to trim the capacity of an array list the current list size.
 
 import java.util.ArrayList;
 
-public class Question20 {
+public class Question19 {
 
     public static void main(String[] args){
 
-        ArrayList<String> colors = new ArrayList<String>(6);
+        ArrayList<String> colors = new ArrayList<String>();
 
         colors.add("Red");
         colors.add("Green");
@@ -17,19 +17,12 @@ public class Question20 {
         colors.add("White");
         colors.add("Black");
 
+        System.out.println(colors);
 
-        colors.ensureCapacity(9);
-
-        colors.add("Blue");
-        colors.add("White");
-        colors.add("Black");
+        colors.trimToSize();
 
         System.out.println(colors);
 
-
-
-
-
-
     }
+
 }

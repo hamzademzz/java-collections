@@ -1,14 +1,13 @@
-package List;
+package List.Questions;
 
-//16. Write a Java program to clone an array list to another array list.
+//12.Write a Java program to extract a portion of a array list.
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.List;
 
-public class Question16 {
+public class Question12 {
 
     public static void main(String[] args){
-
         ArrayList<String> colors = new ArrayList<String>();
 
         colors.add("Red");
@@ -18,11 +17,9 @@ public class Question16 {
         colors.add("White");
         colors.add("Black");
 
-        ArrayList<String> clone = (ArrayList<String>)colors.clone();
+        //LEARN HOW TO WRITE A SUBLIST
+        List<String> colorsSubList = colors.subList(2 , 4);
 
-
-
-        System.out.println(clone);
-        System.out.println(colors);
+        System.out.println(colorsSubList);
     }
 }

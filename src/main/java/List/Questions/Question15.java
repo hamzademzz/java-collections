@@ -1,4 +1,4 @@
-package List;
+package List.Questions;
 
 //15. Write a Java program to join two array lists.
 
