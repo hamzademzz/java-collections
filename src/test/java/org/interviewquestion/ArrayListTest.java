@@ -11,20 +11,17 @@ import static org.junit.Assert.assertEquals;
 public class ArrayListTest {
     // ??????
     @Test
-    public void addShouldAddToArrayList(){
+    public void addShouldAddToArrayList() {
         Question1 question1 = new Question1();
-        ArrayList<String> expected =new ArrayList<String>();
-        ArrayList<String> actual = question1.getString();
 
-      assertEquals(expected, actual);
+        String expected = "Red";
+        question1.add(expected);
+        String actual = question1.getLast();
+
+        assertEquals(expected, actual);
+
+
     }
-
-
-
-
-
-
-
 
 
 }
