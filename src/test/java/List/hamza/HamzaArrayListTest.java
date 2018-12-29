@@ -47,7 +47,7 @@ public class HamzaArrayListTest {
         items.add(1);
         items.add(2);
         items.add(3);
-        boolean expected = items.contains(2);
+        boolean expected = items.contains(3);
         boolean actual = true;
         assertEquals(expected,actual);
 

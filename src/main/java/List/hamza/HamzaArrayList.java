@@ -21,16 +21,21 @@ public class HamzaArrayList<T> implements List<T>{
         items=tmp;
     }
 
-    public int size() {
-        return count;
-    }
+    public int size() {return count; }
 
     public boolean isEmpty() {
-        return size() ==0;
+        return items.length ==0;
     }
 
     public boolean contains(Object o) {
-        throw new NotImplementedException();
+
+        for (int i=0; i<items.length; i++){
+            if (items[i] == o){
+                return true;
+            }
+
+        }
+        return false;
     }
 
     public Iterator<T> iterator() {
