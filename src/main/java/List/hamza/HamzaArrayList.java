@@ -21,11 +21,25 @@ public class HamzaArrayList<T> implements List<T>{
         items=tmp;
     }
 
-    public int size() {return count; }
+    /**
+     size
+     */
+    public int size() {
+        return count;
+    }
+
+    /**
+     isEmpty
+     */
 
     public boolean isEmpty() {
+
         return items.length ==0;
     }
+
+    /**
+     contains
+     */
 
     public boolean contains(Object o) {
 
@@ -49,6 +63,10 @@ public class HamzaArrayList<T> implements List<T>{
     public <T> T[] toArray(T[] a) {
         throw new NotImplementedException();
     }
+
+    /**
+     add
+     */
 
     public boolean add(T s) {
         if (capacity< count+1){
@@ -87,9 +105,20 @@ public class HamzaArrayList<T> implements List<T>{
         throw new NotImplementedException();
     }
 
+    /**
+     get
+     */
+
     public T get(int index) {
-        throw new NotImplementedException();
+
+       return (T) items[index];
     }
+
+
+    /**
+     set
+     */
+
 
     public T set(int index, T element) {
         throw new NotImplementedException();

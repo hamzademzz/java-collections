@@ -2,6 +2,7 @@ package List.hamza;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -52,6 +53,20 @@ public class HamzaArrayListTest {
         assertEquals(expected,actual);
 
     }
+
+    @Test
+    public void getUsingIndex(){
+        List<Integer> items =new HamzaArrayList<Integer>();
+        items.add(1);
+        items.add(2);
+        items.add(3);
+        Integer expected = items.get(2);
+        Integer actual = 3;
+        assertEquals(expected,actual);
+
+    }
+
+
 
 
 
