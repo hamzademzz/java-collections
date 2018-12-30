@@ -121,7 +121,10 @@ public class HamzaArrayList<T> implements List<T>{
 
 
     public T set(int index, T element) {
-        throw new NotImplementedException();
+
+        return (T) (items[index]= element);
+
+
     }
 
     public void add(int index, T element) {

@@ -63,7 +63,18 @@ public class HamzaArrayListTest {
         Integer expected = items.get(2);
         Integer actual = 3;
         assertEquals(expected,actual);
+    }
 
+    @Test
+    public void setUsingIndex(){
+        List<Integer> items = new HamzaArrayList<Integer>();
+        items.add(1);
+        items.add(2);
+        items.add(3);
+        items.set(1,999);
+        Integer expected = items.get(1);
+        Integer actual = 999;
+        assertEquals(expected,actual);
     }
 
 
