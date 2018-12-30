@@ -5,5 +5,8 @@ public class QList1App {
         QList1 q=new QList1Impl();
         q.add("Red");
         System.out.println(q.getLast());
+
+
+
     }
 }

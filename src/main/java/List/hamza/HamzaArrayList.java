@@ -12,6 +12,10 @@ public class HamzaArrayList<T> implements List<T>{
     int capacity=1;
     Object[] items= new Object[capacity];
 
+    /**
+     Increase Capacity
+     */
+
     private void increaseCapacity(){
         capacity=capacity*2;
         Object[] tmp=new Object[capacity];
@@ -148,8 +152,20 @@ public class HamzaArrayList<T> implements List<T>{
         return -1;
     }
 
+    /**
+     lastIndexOf
+     */
+
+
     public int lastIndexOf(Object o) {
-        throw new NotImplementedException();
+
+        for (int i=items.length -1 ; i>=0; i--){
+            if (items[i] == o){
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     public ListIterator<T> listIterator() {

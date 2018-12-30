@@ -89,6 +89,18 @@ public class HamzaArrayListTest {
         assertEquals(expected,actual);
     }
 
+    @Test
+    public void lastIndexOf(){
+        List<Integer> items =new HamzaArrayList<Integer>();
+        items.add(1);
+        items.add(2);
+        items.add(3);
+        items.add(2);
+        items.add(1);
+        Integer expected = items.lastIndexOf(2);
+        Integer actual = 3;
+        assertEquals(expected,actual);
+    }
 
 
 
