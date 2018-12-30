@@ -135,8 +135,17 @@ public class HamzaArrayList<T> implements List<T>{
         throw new NotImplementedException();
     }
 
+    /**
+     indexOf
+     */
+
     public int indexOf(Object o) {
-        throw new NotImplementedException();
+
+        for (int i=0; i< items.length; i++){
+            if (items[i] == o)
+                return i;
+        }
+        return -1;
     }
 
     public int lastIndexOf(Object o) {

@@ -78,6 +78,18 @@ public class HamzaArrayListTest {
     }
 
 
+    @Test
+    public void indexOf(){
+        List<Integer> items =new HamzaArrayList<Integer>();
+        items.add(1);
+        items.add(2);
+        items.add(3);
+        Integer expected = items.indexOf(3);
+        Integer actual = 2;
+        assertEquals(expected,actual);
+    }
+
+
 
 
 
