@@ -12,30 +12,30 @@ import static org.junit.Assert.assertTrue;
 public class HamzaArrayListTest {
 
     @Test
-    public void addShouldAdd(){
+    public void addShouldAdd() {
         List<Integer> items = new HamzaArrayList<Integer>();
-        boolean actual =items.add(1);
+        boolean actual = items.add(1);
         assertTrue(actual);
 
     }
 
 
     @Test
-    public void addCanBeUsedMultipleTimes(){
+    public void addCanBeUsedMultipleTimes() {
         List<Integer> items = new HamzaArrayList<Integer>();
         items.add(1);
         items.add(2);
+        Integer expected = 2;
         Integer actual = items.size();
-        Integer expected=2;
         assertEquals(expected, actual);
     }
 
     @Test
-    public void isEmptyShouldReturnTrueOrFalse(){
-        List<Integer> items =new HamzaArrayList<Integer>();
+    public void isEmptyShouldReturnTrueOrFalse() {
+        List<Integer> items = new HamzaArrayList<Integer>();
         items.add(1);
-        boolean expected = items.isEmpty();
-        boolean actual = false;
+        boolean expected = false;
+        boolean actual = items.isEmpty();
 
         assertEquals(expected, actual);
 
@@ -43,67 +43,126 @@ public class HamzaArrayListTest {
 
 
     @Test
-    public void containsCheckIfItContains(){
-        List<Integer> items =new HamzaArrayList<Integer>();
-        items.add(1);
-        items.add(2);
-        items.add(3);
-        boolean expected = items.contains(3);
-        boolean actual = true;
-        assertEquals(expected,actual);
-
-    }
-
-    @Test
-    public void getUsingIndex(){
-        List<Integer> items =new HamzaArrayList<Integer>();
-        items.add(1);
-        items.add(2);
-        items.add(3);
-        Integer expected = items.get(2);
-        Integer actual = 3;
-        assertEquals(expected,actual);
-    }
-
-    @Test
-    public void setUsingIndex(){
+    public void containsCheckIfItContains() {
         List<Integer> items = new HamzaArrayList<Integer>();
         items.add(1);
         items.add(2);
         items.add(3);
-        items.set(1,999);
-        Integer expected = items.get(1);
-        Integer actual = 999;
-        assertEquals(expected,actual);
+        boolean expected = true;
+        boolean actual = items.contains(3);
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void getUsingIndex() {
+        List<Integer> items = new HamzaArrayList<Integer>();
+        items.add(1);
+        items.add(2);
+        items.add(3);
+        Integer expected = 3;
+        Integer actual = items.get(2);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setUsingIndex() {
+        Integer expected = 999;
+        int index = 1;
+        List<Integer> items = new HamzaArrayList<Integer>();
+        items.add(1);
+        items.add(2);
+        items.add(3);
+        items.set(index, expected);
+        Integer actual = items.get(index);
+        assertEquals(expected, actual);
     }
 
 
     @Test
-    public void indexOf(){
-        List<Integer> items =new HamzaArrayList<Integer>();
+    public void indexOf() {
+        Integer expected = 2;
+        List<Integer> items = new HamzaArrayList<Integer>();
         items.add(1);
         items.add(2);
         items.add(3);
-        Integer expected = items.indexOf(3);
-        Integer actual = 2;
-        assertEquals(expected,actual);
+        Integer actual = items.indexOf(3);
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void lastIndexOf(){
-        List<Integer> items =new HamzaArrayList<Integer>();
+    public void lastIndexOf() {
+        List<Integer> items = new HamzaArrayList<Integer>();
         items.add(1);
         items.add(2);
         items.add(3);
         items.add(2);
         items.add(1);
-        Integer expected = items.lastIndexOf(2);
-        Integer actual = 3;
-        assertEquals(expected,actual);
+        Integer expected = 3;
+        Integer actual = items.lastIndexOf(2);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void addAtIndex() {
+        Integer addedValue = 100;
+        int index = 1;
+        List<Integer> items = new HamzaArrayList<Integer>();
+        items.add(1);
+        items.add(2);
+        items.add(3);
+        items.add(4);
+        items.add(5);
+        items.add(index, addedValue);
+
+        assertEquals(addedValue, items.get(index));
+        assertEquals(new Integer(2), items.get(2));
+        assertEquals(new Integer(3), items.get(3));
+        assertEquals(new Integer(4), items.get(4));
+        assertEquals(new Integer(5), items.get(5));
+    }
+
+    @Test
+    public void containsAll() {
+        List<Integer> items = new HamzaArrayList<Integer>();
+        items.add(1);
+        items.add(2);
+
+        List<Integer> items2 = new HamzaArrayList<Integer>();
+        items.add(1);
+        items.add(2);
+
+        boolean expected = true;
+        boolean actual = items.containsAll(items2);
+
+        assertEquals(expected, actual);
     }
 
 
+    @Test
+    public void removeShouldRemove() {
+        Integer itemToRemove = 1;
+        List<Integer> items = new HamzaArrayList<Integer>();
+        items.add(1);
+        items.add(2);
+        items.add(3);
+        items.remove(itemToRemove);
+        Integer expected = 2;
+        Integer actual = items.size();
 
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    public void clearShouldClear() {
+        List<Integer> items = new HamzaArrayList<Integer>();
+        items.add(1);
+        items.add(2);
+        items.add(3);
+        items.clear();
+        assertEquals(items.size(),0);
+    }
 
 
 }
@@ -117,15 +176,41 @@ public class HamzaArrayListTest {
 
 
 
- /*
+
+
+
+
+
+/*
+
+
+
+
+
+
+
+
+
+
+    HOW CAN I CHECK LISTS
+
     @Test
-    public void removeShouldRemove(){
+    public void subListGivesRangeView(){
         List<Integer> items =new HamzaArrayList<Integer>();
+        items.add(0);
         items.add(1);
         items.add(2);
-        items.remove(1);
-        Integer actual = items.size();
-        Integer expected = 1;
+        items.add(3);
+        items.add(4);
+        items.add(5);
+
+
+
+
+        assertEquals(expected,actual);
+
 
     }
-     */
+*/
+
+
