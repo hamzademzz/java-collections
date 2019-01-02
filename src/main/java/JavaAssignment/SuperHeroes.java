@@ -102,4 +102,8 @@ public class SuperHeroes {
     public void setFightingSkillsRating(int fightingSkillsRating) {
         this.fightingSkillsRating = fightingSkillsRating;
     }
+    @Override
+    public String toString() {
+        return pseudonym + height + intelligenceRating + strengthRating + speedRating + agilityRating + fightingSkillsRating + realName + description;
+    }
 }
