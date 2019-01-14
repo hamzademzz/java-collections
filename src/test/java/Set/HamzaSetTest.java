@@ -57,4 +57,15 @@ public class HamzaSetTest {
         assertEquals(expected,actual);
     }
 
+    @Test
+    public void clearShouldClear(){
+        Set<Integer> items = new HamzaSet<Integer>();
+        items.add(1);
+        items.add(2);
+        items.clear();
+        Integer expected = 0;
+        Integer actual = items.size();
+        assertEquals(expected,actual);
+    }
+
 }

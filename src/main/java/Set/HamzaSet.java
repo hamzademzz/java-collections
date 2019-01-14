@@ -98,6 +98,9 @@ public class HamzaSet<T> implements Set<T> {
         return true;
     }
 
+
+
+
     public boolean remove(Object o) {
         throw new NotImplementedException();
     }
@@ -119,7 +122,9 @@ public class HamzaSet<T> implements Set<T> {
     }
 
     public void clear() {
-        throw new NotImplementedException();
+        count = 0;
+        capacity = 1;
+        items = new Object[capacity];
     }
 
 
