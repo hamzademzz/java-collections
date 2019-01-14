@@ -41,16 +41,41 @@ public class HamzaSet<T> implements Set<T> {
         return false;
     }
 
-    public Iterator<T> iterator() {
-        throw new NotImplementedException();
-    }
+
+
+
+
+
+
+
+
+    public Iterator<T> iterator() { throw new NotImplementedException();}
+
+
+
+
+
+
+
+    /**
+     * toArray
+     */
 
     public Object[] toArray() {
-        throw new NotImplementedException();
+        Object[] arr = new Object[count];
+        for (int i = 0; i < count; i++) {
+            arr[i] = items[i];
+        }
+        return arr;
     }
 
+
     public <T> T[] toArray(T[] a) {
-        throw new NotImplementedException();
+        T[] arr = (T[]) new Object[count];
+        for (int i = 0; i < count; i++) {
+            arr[i] = (T) items[i];
+        }
+        return arr;
     }
 
     /**
