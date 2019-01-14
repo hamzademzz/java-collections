@@ -100,10 +100,31 @@ public class HamzaSet<T> implements Set<T> {
 
 
 
+    /**
+     * remove
+     */
 
     public boolean remove(Object o) {
-        throw new NotImplementedException();
+        int index =0;
+
+        for(int i=0; i<size(); i++){
+            if(items[i] == o){
+                index = i;
+            }
+        }
+
+        if (index < 0) return false;
+        shiftLeft(items, index, count);
+        count--;
+        return true;
     }
+
+
+
+
+
+
+
 
     public boolean containsAll(Collection<?> c) {
         throw new NotImplementedException();
@@ -121,12 +142,23 @@ public class HamzaSet<T> implements Set<T> {
         throw new NotImplementedException();
     }
 
+
+
+
+
+
+
+
+
+    /**
+     * add
+     */
+
     public void clear() {
         count = 0;
         capacity = 1;
         items = new Object[capacity];
     }
-
 
     private void increaseCapacity() {
         capacity = capacity * 2;
@@ -135,6 +167,13 @@ public class HamzaSet<T> implements Set<T> {
             tmp[i] = items[i];
         }
         items = tmp;
+    }
+
+
+    private void shiftLeft(Object[] items, int index, int count) {
+        for (int i = index; i < count; i++) {
+            items[i] = items[i + 1];
+        }
     }
 }
 

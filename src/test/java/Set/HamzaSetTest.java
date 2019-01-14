@@ -68,4 +68,20 @@ public class HamzaSetTest {
         assertEquals(expected,actual);
     }
 
+    @Test
+    public void removeShouldRemoveElement(){
+        Set<Integer> items = new HamzaSet<Integer>();
+        Integer itemToRemove = 2;
+        items.add(1);
+        items.add(2);
+        items.add(3);
+        items.add(4);
+        items.add(5);
+        items.add(6);
+        items.remove(itemToRemove);
+        Integer expected = 5;
+        Integer actual = items.size();
+        assertEquals(expected,actual);
+    }
+
 }
