@@ -27,13 +27,22 @@ public class HamzaSetTest {
 
     @Test
     public void sizeShouldReturnSize(){
-        Set<Integer> items = new HashSet<Integer>();
+        Set<Integer> items = new HamzaSet<Integer>();
         items.add(1);
         items.add(2);
         items.add(3);
         items.add(1);
         Integer expected = 3;
         Integer actual = items.size();
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void isEmptyShouldReturnTrueOrFalse(){
+        Set<Integer> items = new HamzaSet<Integer>();
+        items.add(1);
+        Boolean expected = false;
+        Boolean actual = items.isEmpty();
         assertEquals(expected,actual);
     }
 }

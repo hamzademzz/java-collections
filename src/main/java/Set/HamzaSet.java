@@ -14,12 +14,19 @@ public class HamzaSet<T> implements Set<T> {
     Object[] items = new Object[capacity];
 
 
+    /**
+     * size
+     */
+
     public int size() {
         return count;
     }
 
+    /**
+     * isEmpty
+     */
     public boolean isEmpty() {
-        throw new NotImplementedException();
+        return size() == 0;
     }
 
     public boolean contains(Object o) {
