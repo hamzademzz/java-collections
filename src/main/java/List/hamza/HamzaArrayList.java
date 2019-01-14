@@ -219,9 +219,7 @@ public class HamzaArrayList<T> implements List<T> {
         throw new NotImplementedException();
     }
 
-    public ListIterator<T> listIterator(int index) {
-        throw new NotImplementedException();
-    }
+    public ListIterator<T> listIterator(int index) {throw new NotImplementedException();}
 
 
     /**
