@@ -45,4 +45,16 @@ public class HamzaSetTest {
         Boolean actual = items.isEmpty();
         assertEquals(expected,actual);
     }
+
+    @Test
+    public void containsSpecificItem(){
+        Set<Integer> items = new HamzaSet<Integer>();
+        items.add(1);
+        items.add(2);
+        items.add(3);
+        Boolean expected = true;
+        Boolean actual = items.contains(1);
+        assertEquals(expected,actual);
+    }
+
 }

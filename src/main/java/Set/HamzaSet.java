@@ -29,8 +29,16 @@ public class HamzaSet<T> implements Set<T> {
         return size() == 0;
     }
 
+    /**
+     * contains
+     */
     public boolean contains(Object o) {
-        throw new NotImplementedException();
+        for(int i=0; i<size(); i++){
+            if(items[i] == o){
+                return true;
+            }
+        }
+        return false;
     }
 
     public Iterator<T> iterator() {
@@ -44,6 +52,10 @@ public class HamzaSet<T> implements Set<T> {
     public <T> T[] toArray(T[] a) {
         throw new NotImplementedException();
     }
+
+    /**
+     * add
+     */
 
     public boolean add(T e) {
 
