@@ -83,5 +83,48 @@ public class HamzaSetTest {
         Integer actual = items.size();
         assertEquals(expected,actual);
     }
+    /*
+    @Test
+    public void containsAll(){
+        Set<Integer> items = new HamzaSet<Integer>();
+        items.add(1);
+        items.add(2);
+        items.add(3);
+
+        Set<Integer> items2 = new HamzaSet<Integer>();
+        items2.add(1);
+        items2.add(2);
+        items2.add(3);
+
+        Boolean expected = true;
+        Boolean actual = items.containsAll(items2);
+
+        assertEquals(expected,actual);
+
+    }
+    */
+
+    @Test
+    public void addAll(){
+        Set<Integer> items = new HamzaSet<Integer>();
+        items.add(1);
+        items.add(2);
+        items.add(3);
+
+        Set<Integer> items2 = new HamzaSet<Integer>();
+        items2.add(1);
+        items2.add(2);
+        items2.add(3);
+
+        items.addAll(items2);
+
+        Integer expected = 6;
+        Integer actual = items.size();
+
+
+
+        assertEquals(expected,actual);
+
+    }
 
 }

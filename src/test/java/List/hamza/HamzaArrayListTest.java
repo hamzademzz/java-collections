@@ -127,9 +127,11 @@ public class HamzaArrayListTest {
         items.add(1);
         items.add(2);
 
+
         List<Integer> items2 = new HamzaArrayList<Integer>();
-        items.add(1);
-        items.add(2);
+        items2.add(1);
+        items2.add(2);
+
 
         boolean expected = true;
         boolean actual = items.containsAll(items2);

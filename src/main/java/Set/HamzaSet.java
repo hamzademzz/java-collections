@@ -126,12 +126,12 @@ public class HamzaSet<T> implements Set<T> {
 
 
 
-    public boolean containsAll(Collection<?> c) {
-        throw new NotImplementedException();
-    }
+    public boolean containsAll(Collection<?> c) {throw new NotImplementedException();}
+
 
     public boolean addAll(Collection<? extends T> c) {
         throw new NotImplementedException();
+
     }
 
     public boolean retainAll(Collection<?> c) {
@@ -151,7 +151,7 @@ public class HamzaSet<T> implements Set<T> {
 
 
     /**
-     * add
+     * clear
      */
 
     public void clear() {
@@ -160,6 +160,11 @@ public class HamzaSet<T> implements Set<T> {
         items = new Object[capacity];
     }
 
+
+
+    /**
+     * increaseCapacity
+     */
     private void increaseCapacity() {
         capacity = capacity * 2;
         Object[] tmp = new Object[capacity];
@@ -169,6 +174,9 @@ public class HamzaSet<T> implements Set<T> {
         items = tmp;
     }
 
+    /**
+     * shiftLeft
+     */
 
     private void shiftLeft(Object[] items, int index, int count) {
         for (int i = index; i < count; i++) {
