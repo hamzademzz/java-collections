@@ -27,7 +27,15 @@ public class HamzaMap <T, S> implements Map<T, S> {
     }
 
     public boolean containsKey(Object key) {
-        throw new NotImplementedException();
+
+        for(int i=0; i<count; i++){
+            if (i% 2 == 0){
+                if (items[i] == key){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public boolean containsValue(Object value) {
