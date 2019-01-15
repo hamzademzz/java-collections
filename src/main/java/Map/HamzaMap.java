@@ -23,7 +23,7 @@ public class HamzaMap <T, S> implements Map<T, S> {
     }
 
     public boolean isEmpty() {
-        throw new NotImplementedException();
+        return size()==0;
     }
 
     public boolean containsKey(Object key) {
