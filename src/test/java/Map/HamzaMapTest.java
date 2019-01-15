@@ -23,4 +23,18 @@ public class HamzaMapTest {
 
         assertEquals(expected,actual);
     }
+
+    @Test
+    public void sizeShouldReturnSize(){
+        Map<Integer, String> items = new HamzaMap<Integer,String>();
+        items.put(1,"One");
+        items.put(2,"Two");
+
+
+        Integer expected = 2;
+        Integer actual = items.size();
+
+        assertEquals(expected,actual);
+    }
+
 }
