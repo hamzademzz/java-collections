@@ -18,7 +18,9 @@ public class Question3 {
         items.put(3,"Three");
         items.put(4,"Four");
 
-        System.out.println(items.get(1));
+        System.out.println(items);
+        System.out.println(items.remove(1));
+        System.out.println(items);
 
 
     }

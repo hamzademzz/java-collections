@@ -18,13 +18,26 @@ public class HamzaMap <T, S> implements Map<T, S> {
     Object[] items = new Object[capacity];
 
 
+    /**
+     * size
+     */
+
     public int size() {
         return count/2;
     }
 
+
+    /**
+     * isEmpty
+     */
+
     public boolean isEmpty() {
         return size()==0;
     }
+
+    /**
+     * containsKey
+     */
 
     public boolean containsKey(Object key) {
 
@@ -38,6 +51,10 @@ public class HamzaMap <T, S> implements Map<T, S> {
         return false;
     }
 
+    /**
+     * containsValue
+     */
+
     public boolean containsValue(Object value) {
         for(int i=0; i<count; i++){
             if (i% 2 != 0){
@@ -48,6 +65,10 @@ public class HamzaMap <T, S> implements Map<T, S> {
         }
         return false;
     }
+
+    /**
+     * get
+     */
 
     public S get(Object key) {
 
@@ -60,6 +81,10 @@ public class HamzaMap <T, S> implements Map<T, S> {
         return (S) items;
     }
 
+    /**
+     * put
+     */
+
     public S put(T key, S value) {
         if (capacity < count + 1) {
             increaseCapacity();
@@ -71,8 +96,25 @@ public class HamzaMap <T, S> implements Map<T, S> {
         return (S) items;
     }
 
+    /**
+     * remove
+     */
+
     public S remove(Object key) {
-        throw new NotImplementedException();
+        int index = 0;
+
+        for(int i=0; i<size(); i++){
+            if (i% 2 == 0){
+                if(items[i] == key){
+                index = i;
+                }
+            }
+        }
+
+        shiftLeft(items, index, count);
+        count= count -2;
+        return (S) items;
+
     }
 
     public void putAll(Map<? extends T, ? extends S> m) {
@@ -149,5 +191,11 @@ public class HamzaMap <T, S> implements Map<T, S> {
             tmp[i] = items[i];
         }
         items = tmp;
+    }
+
+    private void shiftLeft(Object[] items, int index, int count) {
+        for (int i = index; i < count; i++) {
+            items[i] = items[i + 2];
+        }
     }
 }
