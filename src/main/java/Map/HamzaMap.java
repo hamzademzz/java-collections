@@ -3,17 +3,23 @@ package Map;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.AbstractMap;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-public class HamzaMap <T> implements Map<T, T> {
+public class HamzaMap <T, S> implements Map<T, S> {
+
+    int count = 0;
+    int capacity = 2;
+    Object[] items = new Object[capacity];
 
 
     public int size() {
-        throw new NotImplementedException();
+        return count/2;
     }
 
     public boolean isEmpty() {
@@ -28,19 +34,26 @@ public class HamzaMap <T> implements Map<T, T> {
         throw new NotImplementedException();
     }
 
-    public T get(Object key) {
+    public S get(Object key) {
         throw new NotImplementedException();
     }
 
-    public T put(T key, T value) {
+    public S put(T key, S value) {
+        if (capacity < count + 1) {
+            increaseCapacity();
+        }
+        items[count] = key;
+        count++;
+        items[count]=value;
+        count++;
+        return (S) items;
+    }
+
+    public S remove(Object key) {
         throw new NotImplementedException();
     }
 
-    public T remove(Object key) {
-        throw new NotImplementedException();
-    }
-
-    public void putAll(Map<? extends T, ? extends T> m) {
+    public void putAll(Map<? extends T, ? extends S> m) {
         throw new NotImplementedException();
     }
 
@@ -52,25 +65,28 @@ public class HamzaMap <T> implements Map<T, T> {
         throw new NotImplementedException();
     }
 
-    public Collection<T> values() {
+    public Collection<S> values() {
         throw new NotImplementedException();
     }
 
-    public Set<Entry<T, T>> entrySet() {
+    public Set<Entry<T, S>> entrySet() {
         throw new NotImplementedException();
     }
 
-    public T getOrDefault(Object key, T defaultValue) {
+    public S getOrDefault(Object key, S defaultValue) {
         throw new NotImplementedException();
     }
 
 
-
-    public void replaceAll(BiFunction<? super T, ? super T, ? extends T> function) {
+    public void forEach(BiConsumer<? super T, ? super S> action) {
         throw new NotImplementedException();
     }
 
-    public T putIfAbsent(T key, T value) {
+    public void replaceAll(BiFunction<? super T, ? super S, ? extends S> function) {
+        throw new NotImplementedException();
+    }
+
+    public S putIfAbsent(T key, S value) {
         throw new NotImplementedException();
     }
 
@@ -78,27 +94,38 @@ public class HamzaMap <T> implements Map<T, T> {
         throw new NotImplementedException();
     }
 
-    public boolean replace(T key, T oldValue, T newValue) {
+    public boolean replace(T key, S oldValue, S newValue) {
         throw new NotImplementedException();
     }
 
-    public T replace(T key, T value) {
+    public S replace(T key, S value) {
         throw new NotImplementedException();
     }
 
-    public T computeIfAbsent(T key, Function<? super T, ? extends T> mappingFunction) {
+    public S computeIfAbsent(T key, Function<? super T, ? extends S> mappingFunction) {
         throw new NotImplementedException();
     }
 
-    public T computeIfPresent(T key, BiFunction<? super T, ? super T, ? extends T> remappingFunction) {
+    public S computeIfPresent(T key, BiFunction<? super T, ? super S, ? extends S> remappingFunction) {
         throw new NotImplementedException();
     }
 
-    public T compute(T key, BiFunction<? super T, ? super T, ? extends T> remappingFunction) {
+    public S compute(T key, BiFunction<? super T, ? super S, ? extends S> remappingFunction) {
         throw new NotImplementedException();
     }
 
-    public T merge(T key, T value, BiFunction<? super T, ? super T, ? extends T> remappingFunction) {
+    public S merge(T key, S value, BiFunction<? super S, ? super S, ? extends S> remappingFunction) {
         throw new NotImplementedException();
+    }
+
+
+
+    private void increaseCapacity() {
+        capacity = capacity * 2;
+        Object[] tmp = new Object[capacity];
+        for (int i = 0; i < count; i++) {
+            tmp[i] = items[i];
+        }
+        items = tmp;
     }
 }
