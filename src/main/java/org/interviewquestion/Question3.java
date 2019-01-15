@@ -13,6 +13,12 @@ public class Question3 {
 
 
         Map<Integer, String> items = new HashMap<Integer, String>();
+        items.put(1,"One");
+        items.put(2,"Two");
+        items.put(3,"Three");
+        items.put(4,"Four");
+
+        System.out.println(items.get(1));
 
 
     }

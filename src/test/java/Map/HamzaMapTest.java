@@ -66,4 +66,38 @@ public class HamzaMapTest {
         assertEquals(expected,actual);
 
     }
+
+    @Test
+    public void checksIfContainsValue(){
+        Map<Integer,String> items = new HamzaMap<Integer, String>();
+        items.put(1,"One");
+        items.put(2,"Two");
+        items.put(3,"Three");
+        items.put(4,"Four");
+        items.put(5,"Five");
+        items.put(6,"Six");
+
+        Boolean expected = true;
+        Boolean actual = items.containsValue("Five");
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void getsValueAtSpecificKey(){
+        Map<Integer,String> items = new HamzaMap<Integer, String>();
+        items.put(1,"One");
+        items.put(2,"Two");
+        items.put(3,"Three");
+        items.put(4,"Four");
+        items.put(5,"Five");
+        items.put(6,"Six");
+
+        String expected = "Six";
+        String actual = items.get(6);
+
+        assertEquals(expected,actual);
+    }
+
+
 }
