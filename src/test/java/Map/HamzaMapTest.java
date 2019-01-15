@@ -120,6 +120,22 @@ public class HamzaMapTest {
         assertEquals(expected,actual);
     }
 
+    @Test
+    public void clearShouldClear(){
+        Map<Integer,String> items = new HamzaMap<Integer, String>();
+        items.put(1,"One");
+        items.put(2,"Two");
+        items.put(3,"Three");
+
+        items.clear();
+
+        Integer expected = 0;
+        Integer actual =items.size();
+
+        assertEquals(expected,actual);
+
+    }
+
 
 
 

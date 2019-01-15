@@ -117,12 +117,16 @@ public class HamzaMap <T, S> implements Map<T, S> {
 
     }
 
+
+
     public void putAll(Map<? extends T, ? extends S> m) {
         throw new NotImplementedException();
     }
 
     public void clear() {
-        throw new NotImplementedException();
+        count = 0;
+        int capacity = 2;
+        items = new Object[capacity];
     }
 
     public Set<T> keySet() {
