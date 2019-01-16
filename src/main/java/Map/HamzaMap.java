@@ -3,10 +3,7 @@ package Map;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.util.AbstractMap;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -123,36 +120,119 @@ public class HamzaMap <T, S> implements Map<T, S> {
         throw new NotImplementedException();
     }
 
+
+
+    /**
+     * clear
+     */
+
     public void clear() {
         count = 0;
         int capacity = 2;
         items = new Object[capacity];
     }
 
+    /**
+     * keySet
+     */
     public Set<T> keySet() {
-        throw new NotImplementedException();
+        Set<T> keys = new HashSet<>();
+
+        for(int i=0; i<count; i++){
+            if(i%2 == 0){
+                keys.add((T) items[i]);
+            }
+        }
+
+        return keys;
     }
+
+    /**
+     * values
+     */
 
     public Collection<S> values() {
-        throw new NotImplementedException();
+        List<T> values = new ArrayList<>();
+
+        for(int i=0; i<count; i++){
+            if(i%2 != 0){
+                values.add((T) items[i]);
+            }
+        }
+
+        return (Collection<S>) values;
     }
+
+
+    /**
+     * entrySet not sure how to do this
+     */
 
     public Set<Entry<T, S>> entrySet() {
-        throw new NotImplementedException();
+        List<T> values = new ArrayList<>();
+
+        for(int i=0; i<count; i++){
+            values.add((T) items[i]);
+        }
+
+        Set<T> entrySet = new HashSet<>();
+
+        for(int i=0; i<size(); i++){
+            entrySet.add((T) (values.get(i) + " = " + values.get(i+1)));
+        }
+
+
+        return (Set<Entry<T, S>>) entrySet;
     }
 
+
+    /**
+     * getOrDefault
+     */
+
     public S getOrDefault(Object key, S defaultValue) {
-        throw new NotImplementedException();
+
+        for(int i=0; i<count; i++){
+            if(i%2 == 0){
+                if(items[i] == key){
+                    return (S) items[i+1];
+                }
+
+            }
+        }
+
+        return defaultValue;
     }
+
+
+
+
+    /**
+     * forEach
+     */
 
 
     public void forEach(BiConsumer<? super T, ? super S> action) {
         throw new NotImplementedException();
     }
 
+
     public void replaceAll(BiFunction<? super T, ? super S, ? extends S> function) {
         throw new NotImplementedException();
     }
+
+
+
+
+
+
+
+
+
+
+    /**
+     * forEach
+     */
 
     public S putIfAbsent(T key, S value) {
         throw new NotImplementedException();
@@ -169,6 +249,16 @@ public class HamzaMap <T, S> implements Map<T, S> {
     public S replace(T key, S value) {
         throw new NotImplementedException();
     }
+
+
+
+
+
+
+
+
+
+
 
     public S computeIfAbsent(T key, Function<? super T, ? extends S> mappingFunction) {
         throw new NotImplementedException();
@@ -187,6 +277,9 @@ public class HamzaMap <T, S> implements Map<T, S> {
     }
 
 
+    /**
+     * increaseCapacity
+     */
 
     private void increaseCapacity() {
         capacity = capacity * 2;
@@ -196,6 +289,10 @@ public class HamzaMap <T, S> implements Map<T, S> {
         }
         items = tmp;
     }
+
+    /**
+     * shiftLeft
+     */
 
     private void shiftLeft(Object[] items, int index, int count) {
         for (int i = index; i < count; i++) {

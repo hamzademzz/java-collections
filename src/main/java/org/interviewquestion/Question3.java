@@ -12,15 +12,19 @@ public class Question3 {
     public static void main(String[] args){
 
 
-        Map<Integer, String> items = new HashMap<Integer, String>();
+        Map<Integer, String> items = new HashMap<>();
         items.put(1,"One");
         items.put(2,"Two");
         items.put(3,"Three");
         items.put(4,"Four");
 
-        System.out.println(items);
-        System.out.println(items.remove(1));
-        System.out.println(items);
+
+        System.out.println("Normal        - > "+items);
+        System.out.println("keySet        - > "+items.keySet());
+        System.out.println("entrySet      - > "+items.entrySet());
+        System.out.println("values        - > "+items.values());
+        System.out.println("getOrDefault  - > "+items.getOrDefault(5,"two"));
+
 
 
     }

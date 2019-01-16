@@ -12,6 +12,17 @@ import static org.junit.Assert.assertTrue;
 
 public class HamzaMapTest {
 
+    public static void main(String[] args){
+
+        Map<Integer,String> items = new HamzaMap<Integer, String>();
+        items.put(1,"One");
+        items.put(2,"Two");
+        items.put(3,"Three");
+
+        System.out.println("entrySet    ->" + items.getOrDefault(3,"fdsafsd") );
+
+    }
+
     @Test
     public void putShouldAddKeyAndValue(){
         Map<Integer, String> items = new HamzaMap<Integer,String>();
@@ -135,6 +146,11 @@ public class HamzaMapTest {
         assertEquals(expected,actual);
 
     }
+
+
+
+
+
 
 
 
