@@ -205,38 +205,38 @@ public class HamzaMap <T, S> implements Map<T, S> {
     }
 
 
-
-
     /**
-     * forEach
-     */
-
-
-    public void forEach(BiConsumer<? super T, ? super S> action) {
-        throw new NotImplementedException();
-    }
-
-
-    public void replaceAll(BiFunction<? super T, ? super S, ? extends S> function) {
-        throw new NotImplementedException();
-    }
-
-
-
-
-
-
-
-
-
-
-    /**
-     * forEach
+     * putIfAbsent not fully completed (Array out of bounds)
      */
 
     public S putIfAbsent(T key, S value) {
-        throw new NotImplementedException();
+        if (capacity < count + 1) {
+            increaseCapacity();
+        }
+
+        for(int i=0; i<count; i++){
+            if(i%2 == 0){
+                if(items[i] == key){
+
+                }
+
+            }else{
+                items[count] = key;
+                count++;
+                items[count]=value;
+                count++;
+            }
+        }
+
+
+        return (S) items;
+
     }
+
+
+    /**
+     * remove ===== not sure how this is different from other remove
+     */
 
     public boolean remove(Object key, Object value) {
 
@@ -256,12 +256,36 @@ public class HamzaMap <T, S> implements Map<T, S> {
 
     }
 
+
+
+    /**
+     * replace  ==== this hasnt passed the test? not really sure the difference from other replace
+     */
     public boolean replace(T key, S oldValue, S newValue) {
-        throw new NotImplementedException();
+
+        for(int i=0; i<count; i++){
+            if(i%2 == 0){
+                if(items[i] == oldValue){
+                    items[i+1] = newValue;
+                }
+            }
+        }
+        return false;
     }
+
+    /**
+     * replace
+     */
 
     public S replace(T key, S value) {
-        throw new NotImplementedException();
+        for(int i=0; i<count; i++){
+            if(i%2 == 0){
+                if(items[i] == key){
+                    items[i+1] = value;
+                }
+            }
+        }
+        return (S) items;
     }
 
 
@@ -269,9 +293,22 @@ public class HamzaMap <T, S> implements Map<T, S> {
 
 
 
+    /**
+     * replaceAll
+     */
+
+    public void replaceAll(BiFunction<? super T, ? super S, ? extends S> function) {
+        throw new NotImplementedException();
+    }
+
+    /**
+     * forEach
+     */
 
 
-
+    public void forEach(BiConsumer<? super T, ? super S> action) {
+        throw new NotImplementedException();
+    }
 
 
     public S computeIfAbsent(T key, Function<? super T, ? extends S> mappingFunction) {

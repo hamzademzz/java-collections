@@ -18,6 +18,9 @@ public class Question3 {
         items.put(3,"Three");
         items.put(4,"Four");
 
+        items.replace(1,"TEST",  "NewTest");
+
+
 //
 //        System.out.println("Normal        - > "+items);
 //        System.out.println("keySet        - > "+items.keySet());
@@ -26,7 +29,7 @@ public class Question3 {
 //        System.out.println("getOrDefault  - > "+items.getOrDefault(5,"two"));
 //
 
-        items.remove(1,"Three");
+
 
         System.out.println(items);
 

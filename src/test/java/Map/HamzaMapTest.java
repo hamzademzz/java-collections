@@ -1,14 +1,14 @@
 package Map;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import org.junit.Test;
 
 
-import java.util.HashMap;
+
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
 
 public class HamzaMapTest {
 
@@ -19,7 +19,12 @@ public class HamzaMapTest {
         items.put(2,"Two");
         items.put(3,"Three");
 
-        System.out.println("entrySet    ->" + items.getOrDefault(3,"fdsafsd") );
+        items.putIfAbsent(2,"123");
+
+
+        System.out.println(items.keySet());
+        System.out.println(items.values());
+
 
     }
 
@@ -167,6 +172,43 @@ public class HamzaMapTest {
 
         assertEquals(expected,actual);
     }
+
+//    @Test
+//    public void putIfAbsent(){
+//        Map<Integer, String> items = new HamzaMap<Integer,String>();
+//        items.put(1,"One");
+//        items.put(2,"Two");
+//        items.put(3,"Three");
+//        items.putIfAbsent(1, "TEST");
+//        items.putIfAbsent(5,"TEST2");
+//
+//        Integer expected = 3;
+//        Integer actual = items.size();
+//
+//        assertEquals(expected,actual);
+//    }
+
+    @Test
+    public void replacesValue(){
+        Map<Integer,String> items = new HamzaMap<Integer, String>();
+
+        items.put(1,"One");
+        items.put(2,"Two");
+        items.put(3,"Three");
+        items.put(4,"Four");
+        items.put(5,"Five");
+        items.put(6,"Six");
+        items.put(7,"Seven");
+        items.replace(1,"TEST");
+
+
+        String expected = "TEST";
+        String actual = items.get(1);
+
+        assertEquals(expected,actual);
+    }
+
+
 
 
 
