@@ -239,7 +239,21 @@ public class HamzaMap <T, S> implements Map<T, S> {
     }
 
     public boolean remove(Object key, Object value) {
-        throw new NotImplementedException();
+
+        int index = 0;
+
+        for(int i=0; i<size(); i++){
+            if (i% 2 == 0){
+                if(items[i] == key){
+                    index = i;
+                }
+            }
+        }
+
+        shiftLeft(items, index, count);
+        count= count -2;
+        return false;
+
     }
 
     public boolean replace(T key, S oldValue, S newValue) {

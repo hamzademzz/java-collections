@@ -18,12 +18,17 @@ public class Question3 {
         items.put(3,"Three");
         items.put(4,"Four");
 
+//
+//        System.out.println("Normal        - > "+items);
+//        System.out.println("keySet        - > "+items.keySet());
+//        System.out.println("entrySet      - > "+items.entrySet());
+//        System.out.println("values        - > "+items.values());
+//        System.out.println("getOrDefault  - > "+items.getOrDefault(5,"two"));
+//
 
-        System.out.println("Normal        - > "+items);
-        System.out.println("keySet        - > "+items.keySet());
-        System.out.println("entrySet      - > "+items.entrySet());
-        System.out.println("values        - > "+items.values());
-        System.out.println("getOrDefault  - > "+items.getOrDefault(5,"two"));
+        items.remove(1,"Three");
+
+        System.out.println(items);
 
 
 
