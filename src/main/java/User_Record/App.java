@@ -45,7 +45,6 @@ public class App {
             newUser.add(user);
 
 
-
             myConsole.close();
         } catch (FileNotFoundException ex) {
 
