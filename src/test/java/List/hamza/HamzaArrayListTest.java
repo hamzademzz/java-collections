@@ -1,18 +1,29 @@
 package List.hamza;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 
 public class HamzaArrayListTest {
+    private List<Integer> items;
+
+    private List<Integer> initList(){
+        return new HamzaArrayListPractise1<>();
+    }
+
+    @Before
+    public void setBefore(){
+        items=initList();
+    }
 
     @Test
     public void addShouldAdd() {
-        List<Integer> items = new HamzaArrayList<Integer>();
         boolean actual = items.add(1);
         assertTrue(actual);
 
@@ -21,7 +32,6 @@ public class HamzaArrayListTest {
 
     @Test
     public void addCanBeUsedMultipleTimes() {
-        List<Integer> items = new HamzaArrayList<Integer>();
         items.add(1);
         items.add(2);
         Integer expected = 2;
@@ -31,31 +41,26 @@ public class HamzaArrayListTest {
 
     @Test
     public void isEmptyShouldReturnTrueOrFalse() {
-        List<Integer> items = new HamzaArrayList<Integer>();
         items.add(1);
-        boolean expected = false;
         boolean actual = items.isEmpty();
 
-        assertEquals(expected, actual);
+        assertFalse(actual);
 
     }
 
 
     @Test
     public void containsCheckIfItContains() {
-        List<Integer> items = new HamzaArrayList<Integer>();
         items.add(1);
         items.add(2);
         items.add(3);
-        boolean expected = true;
         boolean actual = items.contains(3);
-        assertEquals(expected, actual);
+        assertTrue( actual);
 
     }
 
     @Test
     public void getUsingIndex() {
-        List<Integer> items = new HamzaArrayList<Integer>();
         items.add(1);
         items.add(2);
         items.add(3);
@@ -68,7 +73,6 @@ public class HamzaArrayListTest {
     public void setUsingIndex() {
         Integer expected = 999;
         int index = 1;
-        List<Integer> items = new HamzaArrayList<Integer>();
         items.add(1);
         items.add(2);
         items.add(3);
@@ -81,7 +85,6 @@ public class HamzaArrayListTest {
     @Test
     public void indexOf() {
         Integer expected = 2;
-        List<Integer> items = new HamzaArrayList<Integer>();
         items.add(1);
         items.add(2);
         items.add(3);
@@ -91,7 +94,6 @@ public class HamzaArrayListTest {
 
     @Test
     public void lastIndexOf() {
-        List<Integer> items = new HamzaArrayList<Integer>();
         items.add(1);
         items.add(2);
         items.add(3);
@@ -106,7 +108,6 @@ public class HamzaArrayListTest {
     public void addAtIndex() {
         Integer addedValue = 100;
         int index = 1;
-        List<Integer> items = new HamzaArrayList<Integer>();
         items.add(1);
         items.add(2);
         items.add(3);
@@ -123,27 +124,23 @@ public class HamzaArrayListTest {
 
     @Test
     public void containsAll() {
-        List<Integer> items = new HamzaArrayList<Integer>();
         items.add(1);
         items.add(2);
 
 
-        List<Integer> items2 = new HamzaArrayList<Integer>();
+        List<Integer> items2 = initList();
         items2.add(1);
         items2.add(2);
 
-
-        boolean expected = true;
         boolean actual = items.containsAll(items2);
 
-        assertEquals(expected, actual);
+        assertTrue(actual);
     }
 
 
     @Test
     public void removeShouldRemove() {
         Integer itemToRemove = 1;
-        List<Integer> items = new HamzaArrayList<Integer>();
         items.add(1);
         items.add(2);
         items.add(3);
@@ -157,7 +154,6 @@ public class HamzaArrayListTest {
 
     @Test
     public void clearShouldClear() {
-        List<Integer> items = new HamzaArrayList<Integer>();
         items.add(1);
         items.add(2);
         items.add(3);

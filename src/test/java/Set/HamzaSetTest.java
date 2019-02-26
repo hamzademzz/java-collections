@@ -2,6 +2,7 @@ package Set;
 
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,7 +14,7 @@ public class HamzaSetTest {
 
     @Test
     public void addShouldAdd(){
-        Set<Integer> items = new HamzaSet<Integer>();
+        Set<Integer> items = new HashSet<>();
         items.add(1);
         items.add(2);
         items.add(3);

@@ -8,11 +8,39 @@ import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-public class HamzaMap <T, S> implements Map<T, S> {
+public class HamzaMap<K, V> implements Map<K, V> {
 
     int count = 0;
-    int capacity = 2;
-    Object[] items = new Object[capacity];
+    Set<Map.Entry<K, V>> entrySet = new HashSet<>();
+
+
+    class HamzaEntry<K, V> implements Map.Entry<K, V> {
+        K key;
+        V value;
+
+        public HamzaEntry(K key,V value){
+            this.key=key;
+            this.value=value;
+        }
+
+        @Override
+        public K getKey() {
+            return this.key;
+        }
+
+        @Override
+        public V getValue() {
+            return this.value;
+        }
+
+        @Override
+        public V setValue(V value) {
+            this.value=value;
+            return this.value;
+        }
+    }
+
+
 
 
     /**
@@ -20,7 +48,7 @@ public class HamzaMap <T, S> implements Map<T, S> {
      */
 
     public int size() {
-        return count/2;
+        return count;
     }
 
 
@@ -29,23 +57,33 @@ public class HamzaMap <T, S> implements Map<T, S> {
      */
 
     public boolean isEmpty() {
-        return size()==0;
+        return size() == 0;
     }
 
     /**
      * containsKey
      */
 
-    public boolean containsKey(Object key) {
-
-        for(int i=0; i<count; i++){
-            if (i% 2 == 0){
-                if (items[i] == key){
-                    return true;
-                }
+    private Map.Entry<K,V> getEntry(K key){
+        for (Map.Entry<K, V> entry : entrySet) {
+            if (entry.getKey() == key) {
+                return entry;
             }
         }
-        return false;
+        return null;
+    }
+
+    private Map.Entry<K,V> getEntryByValue(V value){
+        for (Map.Entry<K, V> entry : entrySet) {
+            if (entry.getValue() == value) {
+                return entry;
+            }
+        }
+        return null;
+    }
+
+    public boolean containsKey(Object key) {
+        return getEntry((K)key)!=null;
     }
 
     /**
@@ -53,73 +91,58 @@ public class HamzaMap <T, S> implements Map<T, S> {
      */
 
     public boolean containsValue(Object value) {
-        for(int i=0; i<count; i++){
-            if (i% 2 != 0){
-                if (items[i] == value){
-                    return true;
-                }
-            }
-        }
-        return false;
+        return getEntryByValue((V)value)!=null;
     }
 
     /**
      * get
      */
 
-    public S get(Object key) {
-
-        for (int i=0; i<count; i++) {
-            if (items[i] == key){
-                return (S)items[i+1];
-            }
-        }
-
-        return (S) items;
+    public V get(Object key) {
+        Entry<K, V> entry = getEntry((K) key);
+        if(entry!=null) return entry.getValue();
+        return null;
     }
 
     /**
      * put
      */
 
-    public S put(T key, S value) {
-        if (capacity < count + 1) {
-            increaseCapacity();
+    public V put(K key, V value) {
+        Entry<K, V> entry = getEntry(key);
+        if(entry!=null){
+            entry.setValue(value);
+            return entry.getValue();
+        }else{
+            Map.Entry<K, V> hamzaEntry = new HamzaEntry<>(key,value);
+            entrySet.add(hamzaEntry);
+            count++;
+            return hamzaEntry.getValue();
         }
-        items[count] = key;
-        count++;
-        items[count]=value;
-        count++;
-        return (S) items;
     }
 
     /**
      * remove
      */
 
-    public S remove(Object key) {
-        int index = 0;
-
-        for(int i=0; i<size(); i++){
-            if (i% 2 == 0){
-                if(items[i] == key){
-                index = i;
-                }
-            }
+    public V remove(Object key) {
+        Entry<K, V> entry = getEntry((K) key);
+        if(entry!=null){
+            entrySet.remove(entry);
+            count--;
+            return entry.getValue();
         }
-
-        shiftLeft(items, index, count);
-        count= count -2;
-        return (S) items;
+        return null;
 
     }
 
 
-
-    public void putAll(Map<? extends T, ? extends S> m) {
+    /**
+     * putAll  throw new NotImplementedException();
+     */
+    public void putAll(Map<? extends K, ? extends V> m) {
         throw new NotImplementedException();
     }
-
 
 
     /**
@@ -128,226 +151,186 @@ public class HamzaMap <T, S> implements Map<T, S> {
 
     public void clear() {
         count = 0;
-        int capacity = 2;
-        items = new Object[capacity];
+        entrySet.clear();
     }
 
     /**
-     * keySet
+     * keySet TEST
      */
-    public Set<T> keySet() {
-        Set<T> keys = new HashSet<>();
-
-        for(int i=0; i<count; i++){
-            if(i%2 == 0){
-                keys.add((T) items[i]);
-            }
+    public Set<K> keySet() {
+        Set<K> keys = new HashSet<>();
+        for(Map.Entry<K,V> entry:entrySet){
+            keys.add(entry.getKey());
         }
 
         return keys;
     }
 
     /**
-     * values
+     * values TEST
      */
 
-    public Collection<S> values() {
-        List<T> values = new ArrayList<>();
+    public Collection<V> values() {
+        List<V> values = new ArrayList<>();
 
-        for(int i=0; i<count; i++){
-            if(i%2 != 0){
-                values.add((T) items[i]);
-            }
+        for(Map.Entry<K,V> entry:entrySet){
+            values.add(entry.getValue());
         }
 
-        return (Collection<S>) values;
+
+        return  values;
     }
 
 
     /**
-     * entrySet not sure how to do this
+     * entrySet TEST
      */
 
-    public Set<Entry<T, S>> entrySet() {
-        List<T> values = new ArrayList<>();
-
-        for(int i=0; i<count; i++){
-            values.add((T) items[i]);
-        }
-
-        Set<T> entrySet = new HashSet<>();
-
-        for(int i=0; i<size(); i++){
-            entrySet.add((T) (values.get(i) + " = " + values.get(i+1)));
-        }
-
-
-        return (Set<Entry<T, S>>) entrySet;
+    public Set<Entry<K, V>> entrySet() {
+        return entrySet;
     }
 
 
     /**
-     * getOrDefault
+     * getOrDefault TEST
      */
 
-    public S getOrDefault(Object key, S defaultValue) {
+    public V getOrDefault(Object key, V defaultValue) {
 
-        for(int i=0; i<count; i++){
-            if(i%2 == 0){
-                if(items[i] == key){
-                    return (S) items[i+1];
-                }
-
-            }
-        }
-
+        Entry<K, V> entry = getEntry((K) key);
+        if(entry!=null)return entry.getValue();
         return defaultValue;
     }
 
 
     /**
-     * putIfAbsent not fully completed (Array out of bounds)
+     * putIfAbsent
      */
 
-    public S putIfAbsent(T key, S value) {
-        if (capacity < count + 1) {
-            increaseCapacity();
+    public V putIfAbsent(K key, V value) {
+
+        V v = get(key);
+        if (v == null) {
+            v = put(key, value);
         }
 
-        for(int i=0; i<count; i++){
-            if(i%2 == 0){
-                if(items[i] == key){
-
-                }
-
-            }else{
-                items[count] = key;
-                count++;
-                items[count]=value;
-                count++;
-            }
-        }
-
-
-        return (S) items;
-
+        return v;
     }
 
 
     /**
-     * remove ===== not sure how this is different from other remove
+     * remove TEST
      */
 
     public boolean remove(Object key, Object value) {
-
-        int index = 0;
-
-        for(int i=0; i<size(); i++){
-            if (i% 2 == 0){
-                if(items[i] == key){
-                    index = i;
-                }
-            }
+        Entry<K, V> entry = getEntry((K) key);
+        if(entry!=null){
+            entrySet.remove(entry);
+            count--;
+            return true;
         }
-
-        shiftLeft(items, index, count);
-        count= count -2;
         return false;
-
     }
 
 
 
     /**
-     * replace  ==== this hasnt passed the test? not really sure the difference from other replace
+     * replace TEST
      */
-    public boolean replace(T key, S oldValue, S newValue) {
+    public boolean replace(K key, V oldValue, V newValue) {
 
-        for(int i=0; i<count; i++){
-            if(i%2 == 0){
-                if(items[i] == oldValue){
-                    items[i+1] = newValue;
-                }
-            }
+        if((get(oldValue)  != null) || containsKey(key)){
+            put(key,newValue);
+            return true;
         }
         return false;
     }
 
     /**
-     * replace
+     * replace TEST
      */
 
-    public S replace(T key, S value) {
-        for(int i=0; i<count; i++){
-            if(i%2 == 0){
-                if(items[i] == key){
-                    items[i+1] = value;
-                }
-            }
+    public V replace(K key, V value) {
+        V curValue;
+        if (((curValue = get(key)) != null) || containsKey(key)) {
+            curValue = put(key, value);
         }
-        return (S) items;
-    }
-
-
-
-
-
-
-    /**
-     * replaceAll
-     */
-
-    public void replaceAll(BiFunction<? super T, ? super S, ? extends S> function) {
-        throw new NotImplementedException();
-    }
-
-    /**
-     * forEach
-     */
-
-
-    public void forEach(BiConsumer<? super T, ? super S> action) {
-        throw new NotImplementedException();
-    }
-
-
-    public S computeIfAbsent(T key, Function<? super T, ? extends S> mappingFunction) {
-        throw new NotImplementedException();
-    }
-
-    public S computeIfPresent(T key, BiFunction<? super T, ? super S, ? extends S> remappingFunction) {
-        throw new NotImplementedException();
-    }
-
-    public S compute(T key, BiFunction<? super T, ? super S, ? extends S> remappingFunction) {
-        throw new NotImplementedException();
-    }
-
-    public S merge(T key, S value, BiFunction<? super S, ? super S, ? extends S> remappingFunction) {
-        throw new NotImplementedException();
+        return curValue;
     }
 
 
     /**
-     * increaseCapacity
+     * replaceAll  throw new NotImplementedException();
      */
 
-    private void increaseCapacity() {
-        capacity = capacity * 2;
-        Object[] tmp = new Object[capacity];
-        for (int i = 0; i < count; i++) {
-            tmp[i] = items[i];
-        }
-        items = tmp;
+    public void replaceAll(BiFunction<? super K, ? super V, ? extends V> function) {
+        throw new NotImplementedException();
+
     }
 
-    /**
-     * shiftLeft
-     */
 
-    private void shiftLeft(Object[] items, int index, int count) {
-        for (int i = index; i < count; i++) {
-            items[i] = items[i + 2];
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private void test() {
+        Map<K, V> m = new HashMap<>();
+        List<K> l = new ArrayList<>();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+    public void forEach(BiConsumer<? super K, ? super V> action) {
+        throw new NotImplementedException();
+    }
+
+
+    public V computeIfAbsent(K key, Function<? super K, ? extends V> mappingFunction) {
+        throw new NotImplementedException();
+    }
+
+    public V computeIfPresent(K key, BiFunction<? super K, ? super V, ? extends V> remappingFunction) {
+        throw new NotImplementedException();
+    }
+
+    public V compute(K key, BiFunction<? super K, ? super V, ? extends V> remappingFunction) {
+        throw new NotImplementedException();
+    }
+
+    public V merge(K key, V value, BiFunction<? super V, ? super V, ? extends V> remappingFunction) {
+        throw new NotImplementedException();
+    }
+
 }

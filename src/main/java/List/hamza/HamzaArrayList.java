@@ -155,8 +155,7 @@ public class HamzaArrayList<T> implements List<T> {
 
 
     public T set(int index, T element) {
-        items[index] = element;
-        return get(index);
+        return (T) (items[index] = element);
     }
 
 
@@ -205,7 +204,7 @@ public class HamzaArrayList<T> implements List<T> {
 
     public int lastIndexOf(Object o) {
 
-        for (int i = items.length - 1; i >= 0; i--) {
+        for (int i = count; i >= 0; i--) {
             if (items[i] == o) {
                 return i;
             }

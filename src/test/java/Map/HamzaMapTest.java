@@ -4,7 +4,7 @@ package Map;
 import org.junit.Test;
 
 
-
+import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
@@ -12,38 +12,9 @@ import static org.junit.Assert.assertEquals;
 
 public class HamzaMapTest {
 
-    public static void main(String[] args){
-
-        Map<Integer,String> items = new HamzaMap<Integer, String>();
-        items.put(1,"One");
-        items.put(2,"Two");
-        items.put(3,"Three");
-
-        items.putIfAbsent(2,"123");
-
-
-        System.out.println(items.keySet());
-        System.out.println(items.values());
-
-
-    }
-
-    @Test
-    public void putShouldAddKeyAndValue(){
-        Map<Integer, String> items = new HamzaMap<Integer,String>();
-        items.put(1,"One");
-        items.put(2,"Two");
-        items.put(3,"Three");
-
-        Integer expected = 3;
-        Integer actual = items.size();
-
-        assertEquals(expected,actual);
-    }
-
     @Test
     public void sizeShouldReturnSize(){
-        Map<Integer, String> items = new HamzaMap<Integer,String>();
+        Map<Integer, String> items = new HamzaMap<Integer, String>();
         items.put(1,"One");
         items.put(2,"Two");
 
@@ -65,6 +36,7 @@ public class HamzaMapTest {
 
         assertEquals(expected,actual);
     }
+
 
     @Test
     public void checksIfContainsKey(){
@@ -114,6 +86,21 @@ public class HamzaMapTest {
 
         assertEquals(expected,actual);
     }
+
+    @Test
+    public void putShouldAddKeyAndValue(){
+        Map<Integer, String> items = new HamzaMap<Integer,String>();
+        items.put(1,"One");
+        items.put(2,"Two");
+        items.put(3,"Three");
+
+        Integer expected = 3;
+        Integer actual = items.size();
+
+        assertEquals(expected,actual);
+    }
+
+
 
 
     @Test
@@ -173,20 +160,21 @@ public class HamzaMapTest {
         assertEquals(expected,actual);
     }
 
-//    @Test
-//    public void putIfAbsent(){
-//        Map<Integer, String> items = new HamzaMap<Integer,String>();
-//        items.put(1,"One");
-//        items.put(2,"Two");
-//        items.put(3,"Three");
-//        items.putIfAbsent(1, "TEST");
-//        items.putIfAbsent(5,"TEST2");
-//
-//        Integer expected = 3;
-//        Integer actual = items.size();
-//
-//        assertEquals(expected,actual);
-//    }
+    @Test
+    public void putIfAbsent(){
+        Map<Integer, String> entrySet = new HamzaMap<Integer,String>();
+        entrySet.put(1,"One");
+        entrySet.put(2,"Two");
+        entrySet.put(3,"Three");
+        entrySet.putIfAbsent(1, "TEST1");
+        entrySet.putIfAbsent(2,"TEST2");
+
+
+        Integer expected = 3;
+        Integer actual = entrySet.size();
+
+        assertEquals(expected,actual);
+    }
 
     @Test
     public void replacesValue(){
@@ -199,11 +187,12 @@ public class HamzaMapTest {
         items.put(5,"Five");
         items.put(6,"Six");
         items.put(7,"Seven");
-        items.replace(1,"TEST");
+        items.replace(2,"Two" ,"oNE");
 
 
-        String expected = "TEST";
-        String actual = items.get(1);
+
+        String expected = "oNE";
+        String actual = items.get(2);
 
         assertEquals(expected,actual);
     }

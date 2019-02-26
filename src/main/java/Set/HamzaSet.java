@@ -1,6 +1,6 @@
 package Set;
 
-import com.sun.xml.internal.xsom.impl.scd.Iterators;
+
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 
@@ -42,14 +42,22 @@ public class HamzaSet<T> implements Set<T> {
     }
 
 
+    public Iterator<T> iterator() {
+        Iterator<T> iterator=new Iterator<T>() {
+            int _index=-1;
+            @Override
+            public boolean hasNext() {
+                return size()>0 && _index<size();
+            }
 
-
-
-
-
-
-
-    public Iterator<T> iterator() { throw new NotImplementedException();}
+            @Override
+            public T next() {
+                _index++;
+                return (T)items[_index];
+            }
+        };
+        return iterator;
+    }
 
 
 
@@ -126,28 +134,54 @@ public class HamzaSet<T> implements Set<T> {
 
 
 
-    public boolean containsAll(Collection<?> c) {throw new NotImplementedException();}
+    public boolean containsAll(Collection<?> c) {
+        for(Object o:c){
+            if(!contains(o)){
+                return false;
+            }
+        }
+        return true;
+    }
 
 
     public boolean addAll(Collection<? extends T> c) {
-        throw new NotImplementedException();
+        boolean succeed=true;
+        for(T e:c){
+            if(!add(e)){
+                succeed=false;
+            }
+        }
+        return succeed;
 
     }
 
     public boolean retainAll(Collection<?> c) {
-        throw new NotImplementedException();
+        boolean succeed = true;
+        Iterator<T> iterator=iterator();
+        while (iterator.hasNext()){
+            T o=iterator.next();
+            if(!c.contains(o)){
+                if(!remove(o)){
+                    succeed=false;
+                }
+            }
+        }
+        return succeed;
     }
 
     public boolean removeAll(Collection<?> c) {
-        throw new NotImplementedException();
+        boolean succeed = true;
+        Iterator<T> iterator=iterator();
+        while (iterator.hasNext()){
+            T o=iterator.next();
+            if(c.contains(o)){
+                if(!remove(o)){
+                    succeed=false;
+                }
+            }
+        }
+        return succeed;
     }
-
-
-
-
-
-
-
 
 
     /**
