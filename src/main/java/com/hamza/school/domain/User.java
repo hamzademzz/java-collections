@@ -1,5 +1,8 @@
-package User_Record;
+package com.hamza.school.domain;
 
+
+import java.io.IOException;
+import java.util.Scanner;
 
 public class User {
 
@@ -8,14 +11,15 @@ public class User {
     private String userName;
     private String password;
 
-    public User(){
+    public User() {
 
     }
-    public User(String firstName, String lastName, String userName, String password){
-        this.firstName=firstName;
-        this.lastName=lastName;
-        this.userName=userName;
-        this.password=password;
+
+    public User(String firstName, String lastName, String userName, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.password = password;
 
     }
 
@@ -56,11 +60,17 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return "{" +
+                "firstName=\"" + firstName + "\"" +
+                ", lastName=\"" + lastName + "\"" +
+                ", userName=\"" + userName + "\"" +
+                ", password=\"" + password.replaceAll("[A-Za-z0-9]", "*") + "\"" +
+                "}" + "\n";
     }
+
+
+
+
+
+
 }

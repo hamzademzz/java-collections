@@ -4,7 +4,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 /**
- * Unit test for simple User_Record.User.App.
+ * Unit test for simple com.hamza.school.domain.User.App.
  */
 public class AppTest 
     extends TestCase
