@@ -85,9 +85,6 @@ public class UserModule implements Module {
          String id = input.next();
          System.out.println("User Search : " + userFileRepository.get(id));
 
-
-
-
      }
 
      public void update(){
