@@ -5,6 +5,7 @@ import com.hamza.school.logs.Logger;
 import com.hamza.school.repositories.users.UserRepository;
 import org.junit.Test;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -54,11 +55,28 @@ public class UserModuleTest {
     @Test
     public void find(){
 
+
+
     }
 
 
     @Test
-    public void update(){
+    public void update() throws FileNotFoundException {
+
+        User user=mock(User.class);
+
+        UserRepository userRepository =mock(UserRepository.class);
+
+        Logger logger=mock(Logger.class);
+
+        UserModule userModule = new UserModule(userRepository,logger);
+        userModule.update();
+
+        when(userRepository.get(logger.scanNext())).thenReturn(user);
+        userRepository.update(user);
+
+        verify(userRepository,times(1)).update(user);
+
 
     }
 
