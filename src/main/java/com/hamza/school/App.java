@@ -1,5 +1,7 @@
 package com.hamza.school;
 
+import com.hamza.school.logs.ConsoleLogger;
+import com.hamza.school.logs.Logger;
 import com.hamza.school.modules.MainModule;
 import com.hamza.school.modules.Module;
 import com.hamza.school.modules.StudentModule;
@@ -17,8 +19,8 @@ public class App {
 
         String filePath= MyFileUtils.getUserFilePath("user-record.txt");
         UserRepository userRepository = new UserFileRepository(filePath);
-
-        Module userModule = new UserModule(userRepository);
+        Logger logger=new ConsoleLogger();
+        Module userModule = new UserModule(userRepository,logger);
 
         Module studentModule = new StudentModule();
 

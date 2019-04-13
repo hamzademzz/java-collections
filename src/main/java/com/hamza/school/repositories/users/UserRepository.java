@@ -21,6 +21,8 @@ public interface UserRepository {
 
     boolean authenticate(String username, String password);
 
+    User inputUser();
+
 }
 
 
