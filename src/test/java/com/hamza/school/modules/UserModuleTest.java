@@ -52,13 +52,6 @@ public class UserModuleTest {
         verify(user,times(1)).getUserName();
     }
 
-    @Test
-    public void find(){
-
-
-
-    }
-
 
     @Test
     public void update() throws FileNotFoundException {
@@ -82,19 +75,38 @@ public class UserModuleTest {
 
     @Test
     public void delete(){
+        User user= mock(User.class);
 
-        User user=mock(User.class);
+        UserRepository userRepository = mock(UserRepository.class);
 
-        UserRepository userRepository =mock(UserRepository.class);
-        when(userRepository.delete("Test")).thenReturn(true);
-
-        Logger logger=mock(Logger.class);
+        Logger logger = mock(Logger.class);
 
         UserModule userModule = new UserModule(userRepository,logger);
         userModule.delete();
 
-        verify(userRepository,times(1)).delete("Test");
+        when(userRepository.get(logger.scanNext())).thenReturn(user);
+        userRepository.get(String.valueOf(user));
 
+        verify(userRepository,times(1)).get(String.valueOf(user));
+
+    }
+
+    @Test
+    public void find(){
+
+        User user= mock(User.class);
+
+        UserRepository userRepository = mock(UserRepository.class);
+
+        Logger logger = mock(Logger.class);
+
+        UserModule userModule = new UserModule(userRepository,logger);
+        userModule.find();
+
+        when(userRepository.get(logger.scanNext())).thenReturn(user);
+        userRepository.get(String.valueOf(user));
+
+        verify(userRepository,times(1)).get(String.valueOf(user));
 
 
 

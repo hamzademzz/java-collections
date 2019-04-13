@@ -76,7 +76,6 @@ public class UserModule implements Module {
         logger.printLine("Enter the username of the user you want to find : ");
         String id = logger.scanNext();
         logger.printLine("User Search : " + userRepository.get(id));
-
     }
 
     public void update() {
@@ -93,6 +92,5 @@ public class UserModule implements Module {
         logger.printLine("Enter the username of want to delete : ");
         String id = logger.scanNext();
         userRepository.delete(id);
-
     }
 }
